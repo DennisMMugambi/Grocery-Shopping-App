@@ -5,6 +5,7 @@ import 'package:grocery_shopping_app/widgets/big_text.dart';
 import 'package:grocery_shopping_app/widgets/small_text.dart';
 
 import '../Utils/colors.dart';
+import '../Utils/dimensions.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -19,10 +20,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
     return Scaffold(
       body: Column(
         children: [
+          //Showing the header
           Container(
               child : Container(
-                  margin: EdgeInsets.only(left: 0.0, top: 45.0, right: 0.0, bottom: 0.0),
-                  padding: EdgeInsets.only(left : 20.0, right: 20.0),
+                  margin: EdgeInsets.only(top: Dimensions.height45, bottom: 0.0),
+                  padding: EdgeInsets.only(left : Dimensions.width20, right: Dimensions.width20),
                   child : Row (
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -54,6 +56,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   )
               )
           ),
+          //showing the body
           FoodPageBody(),
         ],
       ),
