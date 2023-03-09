@@ -26,11 +26,15 @@ class Dimensions{
   //Optimizing font size
   static double font20 = screenHeight / 34.17;
   static double font12 = screenHeight / 56.95;
+  static double font26 = screenHeight / 32.46;
+
+  //border radius
   static double radius20 = screenWidth / 34.17;
   static double radius30 = screenWidth / 22.78;
 
   //icon size
   static double iconSize24 = screenHeight / 28.47;
+  static double iconSize16 = screenHeight / 52.75;
 
   //list view dimension constants
   static double listViewImgSize = screenWidth / 3.25;
