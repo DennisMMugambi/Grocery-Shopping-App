@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_shopping_app/widgets/small_text.dart';
 
+import '../Utils/dimensions.dart';
+
 class IconAndTextWidget extends StatelessWidget {
 
   final IconData icon;
@@ -20,6 +22,7 @@ class IconAndTextWidget extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
+          size: Dimensions.iconSize24,
         ),
         SizedBox(
           width: 5,

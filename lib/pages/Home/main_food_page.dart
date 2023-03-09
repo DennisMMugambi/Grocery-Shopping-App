@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_shopping_app/Home/food_page_body.dart';
 import 'package:grocery_shopping_app/widgets/big_text.dart';
 import 'package:grocery_shopping_app/widgets/small_text.dart';
 
-import '../Utils/colors.dart';
-import '../Utils/dimensions.dart';
+import '../../Utils/colors.dart';
+import '../../Utils/dimensions.dart';
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -45,9 +45,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         child: Container (
                           width: 45,
                           height: 45,
-                          child: Icon(Icons.search, color: Colors.white),
+                          child: Icon(Icons.search, color: Colors.white, size: Dimensions.iconSize24,),
                           decoration: BoxDecoration (
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(Dimensions.width15),
                             color: AppColors.mainColor,
                           ),
                         ),
@@ -57,7 +57,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
               )
           ),
           //showing the body
-          FoodPageBody(),
+          Expanded(child: SingleChildScrollView(
+            child : FoodPageBody(),
+          ))
         ],
       ),
     );
