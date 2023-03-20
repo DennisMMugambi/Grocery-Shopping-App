@@ -10,7 +10,7 @@ class Dimensions{
   static double pageViewParentContainer = screenHeight / 2.38;
 
   //dynamic height padding and margin
-  static double height10 = screenHeight / 68.34;
+  static double height10 = screenHeight / 80.34;
   static double height15 = screenHeight / 45.56;
   static double height20 = screenHeight / 34.17;
   static double height30 = screenHeight / 22.78;
@@ -24,8 +24,9 @@ class Dimensions{
   static double width45 = screenWidth / 15.18;
 
   //Optimizing font size
-  static double font20 = screenHeight / 34.17;
   static double font12 = screenHeight / 56.95;
+  static double font16 = screenHeight / 52.75;
+  static double font20 = screenHeight / 34.17;
   static double font26 = screenHeight / 32.46;
 
   //border radius
@@ -42,5 +43,8 @@ class Dimensions{
 
   //popular_food
   static double popularFoodImgSize = screenHeight / 2.41;
+
+  //bottom bar height
+  static double bottomBarHeight = screenHeight / 7.03;
 
 }

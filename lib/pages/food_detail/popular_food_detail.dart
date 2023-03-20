@@ -6,6 +6,7 @@ import '../../Utils/colors.dart';
 import '../../Utils/dimensions.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/expandable_text_widget.dart';
 import '../../widgets/icon_and_text_widget.dart';
 import '../../widgets/small_text.dart';
 
@@ -18,6 +19,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          //background image
           Positioned(
               left: 0,
               right: 0,
@@ -33,6 +35,7 @@ class PopularFoodDetail extends StatelessWidget {
                   )
                 ),
               )),
+          //icon widgets
           Positioned(
               top: Dimensions.height45,
               left: Dimensions.width20,
@@ -44,6 +47,7 @@ class PopularFoodDetail extends StatelessWidget {
                   AppIcon(icon: Icons.shopping_cart_outlined)
                 ],
               )),
+          //introduction of food
           Positioned(
               left: 0,
               right: 0,
@@ -65,7 +69,23 @@ class PopularFoodDetail extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: "Introduce")
+                    BigText(text: "Introduce"),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                          child: ExpandableTextWidget(text : "//Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget, "
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
+                              ", Expandable text widget, Expandable text widget, Expandable text widget, v, vExpandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget"
+                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget"
+                              "Expandable text widget, Expandable text widget,Expandable text widget ,Expandable text widget Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget"
+                              "Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget",)),
+                    )
                   ],
                 )
               )
@@ -73,7 +93,7 @@ class PopularFoodDetail extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 120,
+        height: Dimensions.bottomBarHeight,
         padding: EdgeInsets.only(top: Dimensions.height30, bottom: Dimensions.height30, left: Dimensions.width20, right: Dimensions.width20),
         decoration: BoxDecoration(
             color : AppColors.buttonBackgroundColor,
@@ -87,28 +107,31 @@ class PopularFoodDetail extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.only(
-                  top: Dimensions.height20,
-                  bottom: Dimensions.height20,
-                  left: Dimensions.width20,
-                  right: Dimensions.width20),
+                  top: Dimensions.height10,
+                  bottom: Dimensions.height10,
+                  left: Dimensions.height10,
+                  right: Dimensions.height10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: Colors.white
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.remove,
+                    size: Dimensions.iconSize24,
                     color: AppColors.signColor,),
                   SizedBox(
                     width: Dimensions.width10 / 2,
                   ),
-                  BigText(text: "0"),
+                  BigText(text: "0", size: Dimensions.font20,),
                   SizedBox(
                     width: Dimensions.width10 / 2,
                   ),
                   Icon(
                     Icons.add,
+                    size: Dimensions.iconSize24,
                     color: AppColors.signColor,
                   ),
                 ],
@@ -116,15 +139,15 @@ class PopularFoodDetail extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.only(
-                  top: Dimensions.height20,
-                  bottom: Dimensions.height20,
-                  left: Dimensions.width20,
-                  right: Dimensions.width20),
+                  top: Dimensions.height10,
+                  bottom: Dimensions.height10,
+                  left: Dimensions.height10,
+                  right: Dimensions.height10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: AppColors.mainColor,
               ),
-              child: BigText(text: "\$10 | Add to cart", color: Colors.white,),
+              child: BigText(text: "\$10 | Add to cart", color: Colors.white, size: Dimensions.font26,),
             )
           ],
         ),
