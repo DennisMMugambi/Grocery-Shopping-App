@@ -1,20 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_shopping_app/controllers/popular_product_controller.dart';
+import 'package:grocery_shopping_app/pages/Home/main_food_page.dart';
 import 'package:grocery_shopping_app/widgets/app_icon.dart';
 
+import '../../Utils/app_constants.dart';
 import '../../Utils/colors.dart';
 import '../../Utils/dimensions.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/expandable_text_widget.dart';
-import '../../widgets/icon_and_text_widget.dart';
-import '../../widgets/small_text.dart';
+import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+
+  int pageId;
+
+  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -29,8 +36,8 @@ class PopularFoodDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
-                      "assets/images/food0.png"
+                    image: NetworkImage(
+                      AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!
                     )
                   )
                 ),
@@ -43,7 +50,11 @@ class PopularFoodDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(icon: Icons.arrow_back_ios),
+                  GestureDetector(
+                    onTap: (){
+                      Get.to(() => MainFoodPage());
+                    },
+                      child: AppIcon(icon: Icons.arrow_back_ios)),
                   AppIcon(icon: Icons.shopping_cart_outlined)
                 ],
               )),
@@ -65,7 +76,7 @@ class PopularFoodDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: "Chinese side",),
+                    AppColumn(text: product.name!),
                     SizedBox(
                       height: Dimensions.height20,
                     ),
@@ -75,16 +86,7 @@ class PopularFoodDetail extends StatelessWidget {
                     ),
                     Expanded(
                       child: SingleChildScrollView(
-                          child: ExpandableTextWidget(text : "//Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget, "
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                              ", Expandable text widget, Expandable text widget, Expandable text widget, v, vExpandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget"
-                              "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget"
-                              "Expandable text widget, Expandable text widget,Expandable text widget ,Expandable text widget Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget"
-                              "Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget",)),
+                          child: ExpandableTextWidget(text : product.description!)),
                     )
                   ],
                 )
@@ -147,7 +149,7 @@ class PopularFoodDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: AppColors.mainColor,
               ),
-              child: BigText(text: "\$10 | Add to cart", color: Colors.white, size: Dimensions.font26,),
+              child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white, size: Dimensions.font26,),
             )
           ],
         ),

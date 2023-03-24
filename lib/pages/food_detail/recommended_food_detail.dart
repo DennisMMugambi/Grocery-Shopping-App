@@ -1,34 +1,50 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_shopping_app/routes/route_helper.dart';
 import 'package:grocery_shopping_app/widgets/app_icon.dart';
 import 'package:grocery_shopping_app/widgets/big_text.dart';
 import 'package:grocery_shopping_app/widgets/expandable_text_widget.dart';
 
+import '../../Utils/app_constants.dart';
 import '../../Utils/colors.dart';
 import '../../Utils/dimensions.dart';
+import 'package:get/get.dart';
+
+import '../../controllers/recommended_product_controller.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+
+  var recommendedId;
+
+  RecommendedFoodDetail({Key? key, required this.recommendedId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    var product = Get.find<RecommendedProductController>().recommendedProductList[recommendedId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                    child: AppIcon(icon: Icons.clear)),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(20),
               child: Container(
-                child: Center(child: BigText(size : Dimensions.font26,text : "Chinese Side")),
+                child: Center(child: BigText(size : Dimensions.font26,text : product.name!)),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -44,8 +60,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/images/food0.png",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -55,17 +71,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child: ExpandableTextWidget(text: "//Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget Expandable text widget, "
-            "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
-            "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,"
-            "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                ", Expandable text widget, Expandable text widget, Expandable text widget, v, vExpandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget"
-                "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget"
-                "Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget"
-            "Expandable text widget, Expandable text widget,Expandable text widget ,Expandable text widget Expandable text widget, Expandable text widget,Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget,Expandable text widget, Expandable text widget"
-            "Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget,Expandable text widget",),
-                margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
+                  margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
+                  child: ExpandableTextWidget(text: product.description!),
                 )
               ],
             ),
@@ -134,7 +141,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: AppColors.mainColor,
                   ),
-                  child: BigText(text: "\$10 | Add to cart", color: Colors.white, size: Dimensions.font26,),
+                  child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white, size: Dimensions.font26,),
                 )
               ],
             ),

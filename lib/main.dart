@@ -7,6 +7,8 @@ import 'package:grocery_shopping_app/pages/Home/food_page_body.dart';
 import 'package:grocery_shopping_app/pages/Home/main_food_page.dart';
 import 'package:grocery_shopping_app/pages/food_detail/popular_food_detail.dart';
 import 'package:grocery_shopping_app/pages/food_detail/recommended_food_detail.dart';
+import 'package:grocery_shopping_app/routes/route_helper.dart';
+import 'controllers/recommended_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
 
 void main() async{
@@ -23,14 +25,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: MainFoodPage(),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
