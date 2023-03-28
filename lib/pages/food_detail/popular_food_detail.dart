@@ -73,7 +73,7 @@ class PopularFoodDetail extends StatelessWidget {
                         Container(),
                         Get.find<PopularProductController>().totalItems >= 1 ?
                         Positioned(
-                          right:7, top:3,
+                          right:3, top:3,
                           child: BigText(text: Get.find<PopularProductController>().totalItems.toString(),
                           size: 12, color: Colors.white,),
                         ) :
@@ -175,22 +175,22 @@ class PopularFoodDetail extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(
-                    top: Dimensions.height10,
-                    bottom: Dimensions.height10,
-                    left: Dimensions.height10,
-                    right: Dimensions.height10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: AppColors.mainColor,
-                ),
-                child: GestureDetector(
-                    onTap: () {
-                      popularProduct.addItem(product);
-                    },
-                    child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white, size: Dimensions.font20,)),
-              )
+              GestureDetector(
+              onTap: () {
+                popularProduct.addItem(product);
+              },
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height10,
+                      bottom: Dimensions.height10,
+                      left: Dimensions.height10,
+                      right: Dimensions.height10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: AppColors.mainColor,
+                  ),
+                      child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white, size: Dimensions.font20,)),
+              ),
             ],
           ),
         );
