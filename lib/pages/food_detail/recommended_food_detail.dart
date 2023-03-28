@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_shopping_app/controllers/popular_product_controller.dart';
+import 'package:grocery_shopping_app/pages/cart/cart_page.dart';
 import 'package:grocery_shopping_app/routes/route_helper.dart';
 import 'package:grocery_shopping_app/widgets/app_icon.dart';
 import 'package:grocery_shopping_app/widgets/big_text.dart';
@@ -45,7 +46,11 @@ class RecommendedFoodDetail extends StatelessWidget {
                 GetBuilder<PopularProductController>(builder: (controller) {
                   return Stack(
                     children: [
-                      AppIcon(icon: Icons.shopping_cart_outlined),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() => CartPage());
+                        },
+                          child: AppIcon(icon: Icons.shopping_cart_outlined)),
                       Get.find<PopularProductController>().totalItems >= 1 ?
                       Positioned(
                         right:0, top:0,

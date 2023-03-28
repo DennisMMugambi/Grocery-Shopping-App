@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:grocery_shopping_app/controllers/popular_product_controller.dart';
 import 'package:grocery_shopping_app/pages/Home/food_page_body.dart';
 import 'package:grocery_shopping_app/pages/Home/main_food_page.dart';
+import 'package:grocery_shopping_app/pages/cart/cart_page.dart';
 import 'package:grocery_shopping_app/pages/food_detail/popular_food_detail.dart';
 import 'package:grocery_shopping_app/pages/food_detail/recommended_food_detail.dart';
 import 'package:grocery_shopping_app/routes/route_helper.dart';

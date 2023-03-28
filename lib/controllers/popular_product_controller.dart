@@ -4,6 +4,7 @@ import 'package:grocery_shopping_app/Utils/colors.dart';
 import 'package:grocery_shopping_app/controllers/cart_controller.dart';
 import 'package:grocery_shopping_app/data/repository/popular_product_repo.dart';
 
+import '../models/cart_model.dart';
 import '../models/products_model.dart';
 
 class PopularProductController extends GetxController{
@@ -89,5 +90,9 @@ class PopularProductController extends GetxController{
 
   int get totalItems{
     return _cartController.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cartController.getItems;
   }
 }

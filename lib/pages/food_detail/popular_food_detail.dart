@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:grocery_shopping_app/controllers/cart_controller.dart';
 import 'package:grocery_shopping_app/controllers/popular_product_controller.dart';
 import 'package:grocery_shopping_app/pages/Home/main_food_page.dart';
+import 'package:grocery_shopping_app/pages/cart/cart_page.dart';
 import 'package:grocery_shopping_app/widgets/app_icon.dart';
 
 import '../../Utils/app_constants.dart';
 import '../../Utils/colors.dart';
 import '../../Utils/dimensions.dart';
+import '../../routes/route_helper.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/expandable_text_widget.dart';
@@ -54,21 +56,29 @@ class PopularFoodDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      Get.to(() => MainFoodPage());
-                    },
-                      child: AppIcon(icon: Icons.arrow_back_ios)
-                  ),
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getInitial());
+                      },
+                      child: AppIcon(icon: Icons.arrow_back_ios)),
                   GetBuilder<PopularProductController>(builder: (controller) {
                     return Stack(
                       children: [
-                        AppIcon(icon: Icons.shopping_cart_outlined),
+                        GestureDetector(
+                          onTap: (){
+                          Get.to(() => CartPage());
+                          },
+                            child: AppIcon(icon: Icons.shopping_cart_outlined)),
                         Get.find<PopularProductController>().totalItems >= 1 ?
                         Positioned(
                           right:0, top:0,
-                          child: AppIcon(icon: Icons.circle, size: 20,
-                              iconColor: Colors.transparent,
-                              backgroundColor: AppColors.mainColor),
+                          child: GestureDetector(
+                            onTap : () {
+                              Get.to(() => CartPage());
+                              },
+                            child: AppIcon(icon: Icons.circle, size: 20,
+                                iconColor: Colors.transparent,
+                                backgroundColor: AppColors.mainColor),
+                          ),
                         ) :
                         Container(),
                         Get.find<PopularProductController>().totalItems >= 1 ?
