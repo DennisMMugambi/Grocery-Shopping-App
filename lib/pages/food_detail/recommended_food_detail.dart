@@ -18,8 +18,9 @@ import '../../controllers/recommended_product_controller.dart';
 class RecommendedFoodDetail extends StatelessWidget {
 
   var recommendedId;
+  String page;
 
-  RecommendedFoodDetail({Key? key, required this.recommendedId}) : super(key: key);
+  RecommendedFoodDetail({Key? key, required this.recommendedId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,11 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getInitial());
+                    if(page == "cartPage"){
+                      Get.toNamed(RouteHelper.getCartPage());
+                    } else {
+                      Get.toNamed(RouteHelper.getInitial());
+                    }
                   },
                     child: AppIcon(icon: Icons.clear)),
                // AppIcon(icon: Icons.shopping_cart_outlined)
@@ -51,7 +56,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                           Get.toNamed(RouteHelper.getCartPage());
                         },
                           child: AppIcon(icon: Icons.shopping_cart_outlined)),
-                      Get.find<PopularProductController>().totalItems >= 1 ?
+                      controller.totalItems >= 1 ?
                       Positioned(
                         right:0, top:0,
                         child: GestureDetector(
@@ -67,7 +72,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                       Get.find<PopularProductController>().totalItems >= 1 ?
                       Positioned(
                         right:3, top:3,
-                        child: BigText(text: Get.find<PopularProductController>().totalItems.toString(),
+                        child: BigText(text: controller.totalItems.toString(),
                           size: 12, color: Colors.white,),
                       ) :
                       Container(),
