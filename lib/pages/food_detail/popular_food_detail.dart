@@ -65,7 +65,7 @@ class PopularFoodDetail extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: (){
-                          Get.to(() => CartPage());
+                          Get.toNamed(RouteHelper.getCartPage());
                           },
                             child: AppIcon(icon: Icons.shopping_cart_outlined)),
                         Get.find<PopularProductController>().totalItems >= 1 ?
@@ -73,7 +73,7 @@ class PopularFoodDetail extends StatelessWidget {
                           right:0, top:0,
                           child: GestureDetector(
                             onTap : () {
-                              Get.to(() => CartPage());
+                              Get.toNamed(RouteHelper.getCartPage());
                               },
                             child: AppIcon(icon: Icons.circle, size: 20,
                                 iconColor: Colors.transparent,

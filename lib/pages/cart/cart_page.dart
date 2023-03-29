@@ -12,6 +12,8 @@ import '../../Utils/colors.dart';
 import '../../Utils/dimensions.dart';
 import 'package:get/get.dart';
 
+import '../../routes/route_helper.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
 
@@ -42,7 +44,7 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => MainFoodPage());
+                    Get.toNamed(RouteHelper.getInitial());
                   },
                   child: AppIcon(icon: Icons.home_outlined,
                     iconColor: Colors.white,
