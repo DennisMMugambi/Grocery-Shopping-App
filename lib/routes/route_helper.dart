@@ -4,7 +4,6 @@ import 'package:grocery_shopping_app/pages/food_detail/recommended_food_detail.d
 import 'package:grocery_shopping_app/pages/splash/splash_page.dart';
 
 import '../pages/Home/home_page.dart';
-import '../pages/Home/main_food_page.dart';
 import '../pages/cart/cart_page.dart';
 
 class RouteHelper {
