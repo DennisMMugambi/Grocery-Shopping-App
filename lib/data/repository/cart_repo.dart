@@ -36,7 +36,7 @@ class CartRepo{
     }
     List<CartModel> cartList = [];
 
-    carts.forEach((element) => cart.add(jsonDecode(element)));
+    carts.forEach((element) => CartModel.fromJson(jsonDecode(element)));
     
     
     return cartList;
